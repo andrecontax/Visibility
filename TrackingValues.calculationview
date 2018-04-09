@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="TrackingValues" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="CUBE" schemaVersion="2.3" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="TrackingValues"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="TRACKING_VALUE" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE"/>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="TRACKING_VALUE">
+  <attributes>
+    <attribute id="Carrier" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Carrier"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="CARRIER"/>
+    </attribute>
+    <attribute id="CarrierPrimaryStatus" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CARRIER_PRIMARY"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="CARRIER_PRIMARY"/>
+    </attribute>
+    <attribute id="CarrierSecondaryStatus" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CARRIER_SECONDARY"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="CARRIER_SECONDARY"/>
+    </attribute>
+    <attribute id="CarrierService" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CARRIER_SERVICE"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="CARRIER_SERVICE"/>
+    </attribute>
+    <attribute id="ChangedBy" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHANGED_BY"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="CHANGED_BY"/>
+    </attribute>
+    <attribute id="ChangedOn" order="6" semanticType="date" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHANGED_ON"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="CHANGED_ON"/>
+    </attribute>
+    <attribute id="ContentSource" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONTENT_SOURCE"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="CONTENT_SOURCE"/>
+    </attribute>
+    <attribute id="CommunicationStatus" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMMUNICATION_STATUS"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="COMMUNICATION_STATUS"/>
+    </attribute>
+    <attribute id="CreatedBy" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREATED_BY"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="CREATED_BY"/>
+    </attribute>
+    <attribute id="CreatedOn" order="10" semanticType="date" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREATED_ON"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="CREATED_ON"/>
+    </attribute>
+    <attribute id="DeliveryDate" order="12" semanticType="date" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DELIVERY_DATE"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="DELIVERY_DATE"/>
+    </attribute>
+    <attribute id="DestinationCity" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEST_CITY"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="DEST_CITY"/>
+    </attribute>
+    <attribute id="DestinationCountry" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Destination Country"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="DEST_COUNTRY"/>
+    </attribute>
+    <attribute id="DestinationLatitude" order="15" semanticType="geoLocation.latitude" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEST_LAT"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="DEST_LAT"/>
+    </attribute>
+    <attribute id="DestinationLongitude" order="16" semanticType="geoLocation.longitude" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEST_LONG"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="DEST_LONG"/>
+    </attribute>
+    <attribute id="DestinationPostalCode" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEST_POSTAL_CODE"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="DEST_POSTAL_CODE"/>
+    </attribute>
+    <attribute id="DestinationState" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEST_STATE"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="DEST_STATE"/>
+    </attribute>
+    <attribute id="Height" order="19" semanticType="quantity" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HEIGHT"/>
+      <unitCurrencyAttribute attributeName="Unit"/><unitCurrencyAttribute/><unitCurrencyAttribute/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="HEIGHT"/>
+    </attribute>
+    <attribute id="Id" order="20" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="ID"/>
+    </attribute>
+    <attribute id="Length" order="21" semanticType="quantity" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LENGTH"/>
+      <unitCurrencyAttribute attributeName="Unit"/><unitCurrencyAttribute/><unitCurrencyAttribute/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="LENGTH"/>
+    </attribute>
+    <attribute id="MovementType" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MOVEMENT_TYPE"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="MOVEMENT_TYPE"/>
+    </attribute>
+    <attribute id="NormalizedTrackingStatus" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Status"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="NORMALIZED_TRACKING_STATUS"/>
+    </attribute>
+    <attribute id="OriginCity" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORIGIN_CITY"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="ORIGIN_CITY"/>
+    </attribute>
+    <attribute id="OriginCountry" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Origin Country"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="ORIGIN_COUNTRY"/>
+    </attribute>
+    <attribute id="OriginLatitude" order="26" semanticType="geoLocation.latitude" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORIGIN_LAT"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="ORIGIN_LAT"/>
+    </attribute>
+    <attribute id="OriginLongitude" order="27" semanticType="geoLocation.longitude" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORIGIN_LONG"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="ORIGIN_LONG"/>
+    </attribute>
+    <attribute id="OriginPostalCode" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORIGIN_POSTAL_CODE"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="ORIGIN_POSTAL_CODE"/>
+    </attribute>
+    <attribute id="OriginState" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORIGIN_STATE"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="ORIGIN_STATE"/>
+    </attribute>
+    <attribute id="PickUpDate" order="30" semanticType="date" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PICKUP_DATE"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="PICKUP_DATE"/>
+    </attribute>
+    <attribute id="ProjectedHeight" order="31" semanticType="quantity" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROJ_HEIGHT"/>
+      <unitCurrencyAttribute attributeName="ProjectedUnit"/><unitCurrencyAttribute/><unitCurrencyAttribute/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="PROJ_HEIGHT"/>
+    </attribute>
+    <attribute id="ProjectedLength" order="32" semanticType="quantity" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROJ_LENGTH"/>
+      <unitCurrencyAttribute attributeName="ProjectedUnit"/><unitCurrencyAttribute/><unitCurrencyAttribute/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="PROJ_LENGTH"/>
+    </attribute>
+    <attribute id="ProjectedPickUpDate" order="33" semanticType="date" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROJECTED_PICKUPDATE"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="PROJECTED_PICKUPDATE"/>
+    </attribute>
+    <attribute id="ProjectedUnit" order="34" semanticType="unitOfMeasure" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROJ_UNIT"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="PROJ_UNIT"/>
+    </attribute>
+    <attribute id="ProjectedWidth" order="35" semanticType="quantity" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROJ_WIDTH"/>
+      <unitCurrencyAttribute attributeName="ProjectedUnit"/><unitCurrencyAttribute/><unitCurrencyAttribute/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="PROJ_WIDTH"/>
+    </attribute>
+    <attribute id="ScheduledDeliveryDate" order="37" semanticType="date" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SCHEDULED_DELIVERYDATE"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="SCHEDULED_DELIVERYDATE"/>
+    </attribute>
+    <attribute id="SignedForCity" order="38" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SF_CITY"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="SF_CITY"/>
+    </attribute>
+    <attribute id="SignedForCountry" order="39" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SF_COUNTRY"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="SF_COUNTRY"/>
+    </attribute>
+    <attribute id="SignedForParty" order="40" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SIGNEDFOR_PARTY"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="SIGNEDFOR_PARTY"/>
+    </attribute>
+    <attribute id="SignedForPostalCode" order="41" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SF_POSTAL_CODE"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="SF_POSTAL_CODE"/>
+    </attribute>
+    <attribute id="SignedForState" order="42" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SF_STATE"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="SF_STATE"/>
+    </attribute>
+    <attribute id="TrackingNumber" order="43" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Tracking Number"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="TRACKING_NUMBER"/>
+    </attribute>
+    <attribute id="Unit" order="44" semanticType="unitOfMeasure" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UNIT"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="UNIT"/>
+    </attribute>
+    <attribute id="Version" order="45" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VERSION"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="VERSION"/>
+    </attribute>
+    <attribute id="WeightUnitOfMeasure" order="47" semanticType="unitOfMeasure" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WEIGHT_UNIT"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="WEIGHT_UNIT"/>
+    </attribute>
+    <attribute id="Width" order="48" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WIDTH"/><unitCurrencyAttribute/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="WIDTH"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="DaysInTransit" order="11" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="DAYS_IN_TRANSIT"/>
+      <measureMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="DAYS_IN_TRANSIT"/>
+    </measure>
+    <measure id="ScheduledDaysInTransit" order="36" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="SCHEDULED_DAYS_IN_TRANSIT"/>
+      <measureMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="SCHEDULED_DAYS_IN_TRANSIT"/>
+    </measure>
+    <measure id="Weight" order="46" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="WEIGHT"/>
+      <measureMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="WEIGHT"/>
+    </measure>
+    <measure id="Counter" order="49" aggregationType="count" measureType="simple">
+      <descriptions defaultDescription="Tracking Units"/>
+      <measureMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="ID"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

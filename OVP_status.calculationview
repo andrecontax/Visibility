@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="OVP_status" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="CUBE" schemaVersion="2.3" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="Test"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="TRACKING_VALUE" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE"/>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:AggregationView" id="SourceData">
+    <viewAttributes>
+      <viewAttribute id="Carrier"/>
+      <viewAttribute id="CarrierService"/>
+      <viewAttribute id="DestCountry"/>
+      <viewAttribute id="DaysInTransit"/>
+      <viewAttribute id="OriginCountry"/>
+      <viewAttribute id="PickupDate"/>
+      <viewAttribute id="DeliveryDate"/>
+      <viewAttribute id="NormalizedTrackingStatus"/>
+      <viewAttribute id="ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="Status_InTransit" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <formula>if (isnull(&quot;NormalizedTrackingStatus&quot;), 0, if ((&quot;NormalizedTrackingStatus&quot; ='IN_TRANSIT'), 1, 0))</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="Status_PreTransit" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <formula>if (isnull(&quot;NormalizedTrackingStatus&quot;), 0, if ((&quot;NormalizedTrackingStatus&quot; ='PRE_TRANSIT'), 1, 0))</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="Status_OutForDelivery" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <formula>if (isnull(&quot;NormalizedTrackingStatus&quot;), 0, if ((&quot;NormalizedTrackingStatus&quot; ='OUT_FOR_DELIVERY'), 1, 0))</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="Status_AvailableForPickup" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <formula>if (isnull(&quot;NormalizedTrackingStatus&quot;), 0, if ((&quot;NormalizedTrackingStatus&quot; ='AVAILABLE_FOR_PICKUP'), 1, 0))</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="Status_ReturnToSender" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <formula>if (isnull(&quot;NormalizedTrackingStatus&quot;), 0, if ((&quot;NormalizedTrackingStatus&quot; ='RETURN_TO_SENDER'), 1, 0))</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="Status_Error" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <formula>if (isnull(&quot;NormalizedTrackingStatus&quot;), 0, if ((&quot;NormalizedTrackingStatus&quot; ='ERROR'), 1, 0))</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="Status_Failure" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <formula>if (isnull(&quot;NormalizedTrackingStatus&quot;), 0, if ((&quot;NormalizedTrackingStatus&quot; ='FAILURE'), 1, 0))</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="Status_Unknown" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <formula>if (isnull(&quot;NormalizedTrackingStatus&quot;), 0, if ((&quot;NormalizedTrackingStatus&quot; ='UNKNOWN'), 1, 0))</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="Status_Delivered" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <formula>if (isnull(&quot;NormalizedTrackingStatus&quot;), 0, if ((&quot;NormalizedTrackingStatus&quot; ='DELIVERED'), 1, 0))</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="Status_Cancelled" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+        <formula>if (isnull(&quot;NormalizedTrackingStatus&quot;), 0, if ((&quot;NormalizedTrackingStatus&quot; ='CANCELLED'), 1, 0))</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="#TRACKING_VALUE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Carrier" source="CARRIER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CarrierService" source="CARRIER_SERVICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DestCountry" source="DEST_COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DaysInTransit" source="DAYS_IN_TRANSIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OriginCountry" source="ORIGIN_COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PickupDate" source="PICKUP_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DeliveryDate" source="DELIVERY_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NormalizedTrackingStatus" source="NORMALIZED_TRACKING_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="SourceData">
+  <attributes>
+    <attribute id="Carrier" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Carrier"/>
+      <keyMapping columnObjectName="SourceData" columnName="Carrier"/>
+    </attribute>
+    <attribute id="CarrierService" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CarrierService"/>
+      <keyMapping columnObjectName="SourceData" columnName="CarrierService"/>
+    </attribute>
+    <attribute id="DestCountry" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DestCountry"/>
+      <keyMapping columnObjectName="SourceData" columnName="DestCountry"/>
+    </attribute>
+    <attribute id="DaysInTransit" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DaysInTransit"/>
+      <keyMapping columnObjectName="SourceData" columnName="DaysInTransit"/>
+    </attribute>
+    <attribute id="OriginCountry" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OriginCountry"/>
+      <keyMapping columnObjectName="SourceData" columnName="OriginCountry"/>
+    </attribute>
+    <attribute id="PickupDate" order="6" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PickupDate"/>
+      <keyMapping columnObjectName="SourceData" columnName="PickupDate"/>
+    </attribute>
+    <attribute id="DeliveryDate" order="7" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DeliveryDate"/>
+      <keyMapping columnObjectName="SourceData" columnName="DeliveryDate"/>
+    </attribute>
+    <attribute id="NormalizedTrackingStatus" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NormalizedTrackingStatus"/>
+      <keyMapping columnObjectName="SourceData" columnName="NormalizedTrackingStatus"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="Counter" order="9" aggregationType="sum" engineAggregation="count" measureType="simple">
+      <descriptions defaultDescription="ID"/>
+      <measureMapping columnObjectName="SourceData" columnName="ID"/>
+    </measure>
+    <measure id="Status_InTransit" order="10" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Status_InTransit"/>
+      <measureMapping columnObjectName="SourceData" columnName="Status_InTransit"/>
+    </measure>
+    <measure id="Status_PreTransit" order="11" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Status_PreTransit"/>
+      <measureMapping columnObjectName="SourceData" columnName="Status_PreTransit"/>
+    </measure>
+    <measure id="Status_OutForDelivery" order="12" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Status_OutForDelivery"/>
+      <measureMapping columnObjectName="SourceData" columnName="Status_OutForDelivery"/>
+    </measure>
+    <measure id="Status_AvailableForPickup" order="13" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Status_AvailableForPickup"/>
+      <measureMapping columnObjectName="SourceData" columnName="Status_AvailableForPickup"/>
+    </measure>
+    <measure id="Status_ReturnToSender" order="14" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Status_ReturnToSender"/>
+      <measureMapping columnObjectName="SourceData" columnName="Status_ReturnToSender"/>
+    </measure>
+    <measure id="Status_Error" order="15" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Status_Error"/>
+      <measureMapping columnObjectName="SourceData" columnName="Status_Error"/>
+    </measure>
+    <measure id="Status_Failure" order="16" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Status_Failure"/>
+      <measureMapping columnObjectName="SourceData" columnName="Status_Failure"/>
+    </measure>
+    <measure id="Status_Unknown" order="17" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Status_Unknown"/>
+      <measureMapping columnObjectName="SourceData" columnName="Status_Unknown"/>
+    </measure>
+    <measure id="Status_Delivered" order="18" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Status_Delivered"/>
+      <measureMapping columnObjectName="SourceData" columnName="Status_Delivered"/>
+    </measure>
+    <measure id="Status_Cancelled" order="19" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Status_Cancelled"/>
+      <measureMapping columnObjectName="SourceData" columnName="Status_Cancelled"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="SourceData" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="201" y="227"/>
+      <rectangleSize height="30" width="140"/>
+    </shape></shapes>
+</layout>
+</Calculation:scenario>

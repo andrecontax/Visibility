@@ -1,0 +1,15 @@
+service {
+	"_SYS_BIC"."visibility-xs/TrackingValues" as "TrackingValue"
+	key generate local "GenId"
+	aggregates always (SUM of "Counter");
+	
+	"_SYS_BIC"."visibility-xs/OVP_general" as "OVP_general" 
+	key generate local "GenId"
+	aggregates always (SUM of "Counter", SUM of "DaysInTransit_Sum");
+	
+	"_SYS_BIC"."visibility-xs/ALP_general" as "ALP_general"
+	keys("TrackingValueId", "Id");
+}
+annotations{
+  enable OData4SAP;
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="OVP_DaysInTransit" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="CUBE" schemaVersion="2.3" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="Carriers"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="TRACKING_VALUE" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE"/>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="TRACKING_VALUE">
+  <attributes>
+    <attribute id="Carrier" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CARRIER"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="CARRIER"/>
+    </attribute>
+    <attribute id="CarrierService" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CARRIER_SERVICE"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="CARRIER_SERVICE"/>
+    </attribute>
+    <attribute id="DestinationCountry" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEST_COUNTRY"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="DEST_COUNTRY"/>
+    </attribute>
+    <attribute id="DaysInTransit" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DAYS_IN_TRANSIT"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="DAYS_IN_TRANSIT"/>
+    </attribute>
+    <attribute id="OriginCountry" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORIGIN_COUNTRY"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="ORIGIN_COUNTRY"/>
+    </attribute>
+    <attribute id="PickUpDate" order="6" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PICKUP_DATE"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="PICKUP_DATE"/>
+    </attribute>
+    <attribute id="DeliveryDate" order="7" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DELIVERY_DATE"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="DELIVERY_DATE"/>
+    </attribute>
+    <attribute id="NormalizedTrackingStatus" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NORMALIZED_TRACKING_STATUS"/>
+      <keyMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="NORMALIZED_TRACKING_STATUS"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="DaysInTransit_Cha" order="10" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="false">
+      <descriptions defaultDescription="DaysInTransit_Cha"/>
+      <keyCalculation datatype="NVARCHAR" length="1" expressionLanguage="COLUMN_ENGINE">
+        <formula>&quot;DaysInTransit&quot;</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  
+    <calculatedAttribute id="DaysInTransit_Average" order="11" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="false">
+  
+      <descriptions defaultDescription="DaysInTransit_Average"/>
+  
+      <keyCalculation datatype="VARCHAR" length="1" expressionLanguage="COLUMN_ENGINE">
+  
+        <formula>&quot;DaysInTransit_Sum&quot;/&quot;Counter&quot;</formula>
+  
+      </keyCalculation>
+  
+    </calculatedAttribute></calculatedAttributes>
+  <baseMeasures>
+    <measure id="Counter" order="9" aggregationType="sum" engineAggregation="count" measureType="simple">
+      <descriptions defaultDescription="TRACKING_NUMBER"/>
+      <measureMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="TRACKING_NUMBER"/>
+    </measure>
+  
+    <measure id="DaysInTransit_Sum" order="12" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="DAYS_IN_TRANSIT"/>
+      <measureMapping schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE" columnName="DAYS_IN_TRANSIT"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape></shapes>
+</layout>
+</Calculation:scenario>

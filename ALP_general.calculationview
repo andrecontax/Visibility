@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="ALP_general" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="CUBE" schemaVersion="2.3" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="ALP_general"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="TRACKING_VALUE" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="EXECVIS_TENANT" columnObjectName="TRACKING_VALUE"/>
+  </DataSource>
+  <DataSource id="EVENT" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="EXECVIS_TENANT" columnObjectName="EVENT"/>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:AggregationView" id="TrackingValues">
+    <viewAttributes>
+      <viewAttribute id="TRACKING_NUMBER"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="NORMALIZED_TRACKING_STATUS"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#TRACKING_VALUE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TRACKING_NUMBER" source="TRACKING_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NORMALIZED_TRACKING_STATUS" source="NORMALIZED_TRACKING_STATUS"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="TRACKING_NUMBER"/>
+      <viewAttribute id="NORMALIZED_TRACKING_STATUS"/>
+      <viewAttribute id="TRACKING_VALUE_ID"/>
+      <viewAttribute id="ID_1"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="CARRIER_SECONDARY"/>
+      <viewAttribute id="JOIN$ID$TRACKING_VALUE_ID" hidden="true"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#TrackingValues">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TRACKING_NUMBER" source="TRACKING_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NORMALIZED_TRACKING_STATUS" source="NORMALIZED_TRACKING_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ID$TRACKING_VALUE_ID" source="ID"/>
+    </input>
+    <input node="#Events">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TRACKING_VALUE_ID" source="TRACKING_VALUE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_1" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CARRIER_SECONDARY" source="CARRIER_SECONDARY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ID$TRACKING_VALUE_ID" source="TRACKING_VALUE_ID"/>
+    </input>
+    <joinAttribute name="JOIN$ID$TRACKING_VALUE_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Events">
+    <viewAttributes>
+      <viewAttribute id="TRACKING_VALUE_ID"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="CARRIER_SECONDARY"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#EVENT">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TRACKING_VALUE_ID" source="TRACKING_VALUE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CARRIER_SECONDARY" source="CARRIER_SECONDARY"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="TrackingNumber" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TRACKING_NUMBER"/>
+      <keyMapping columnObjectName="Join_1" columnName="TRACKING_NUMBER"/>
+    </attribute>
+    <attribute id="NormalizedTrackingStatus" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NORMALIZED_TRACKING_STATUS"/>
+      <keyMapping columnObjectName="Join_1" columnName="NORMALIZED_TRACKING_STATUS"/>
+    </attribute>
+    <attribute id="Country" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY"/>
+      <keyMapping columnObjectName="Join_1" columnName="COUNTRY"/>
+    </attribute>
+    <attribute id="CarrierSecondary" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CARRIER_SECONDARY"/>
+      <keyMapping columnObjectName="Join_1" columnName="CARRIER_SECONDARY"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="TrackingValueId" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="TRACKING_VALUE_ID"/>
+      <measureMapping columnObjectName="Join_1" columnName="TRACKING_VALUE_ID"/>
+    </measure>
+    <measure id="Id" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ID_1"/>
+      <measureMapping columnObjectName="Join_1" columnName="ID_1"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="TrackingValues" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="241" y="269"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="120" y="203"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Events" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="231" y="328"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
